@@ -161,6 +161,19 @@ extension CocktailListViewController: UITableViewDataSource {
 //    MARK: - TableView Delegate
 // \___________________________________________/
 extension CocktailListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var cocktailVM: CocktailViewModel?
+        
+        if isFiltering {
+            cocktailVM = filteredCocktails[indexPath.row]
+        } else {
+            cocktailVM = self.cocktailsViewModel?[indexPath.row]
+        }
+        
+        if let cocktailVM = cocktailVM {
+            coordinator?.pushDetail(with: cocktailVM)
+        }
+    }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.loadMoreCocktails()
