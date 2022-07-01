@@ -15,6 +15,8 @@
 		641E0B8C286E496900F1AFC1 /* UIApplication+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641E0B8B286E496900F1AFC1 /* UIApplication+extensions.swift */; };
 		641E0B90286E4DE400F1AFC1 /* CocktailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641E0B8E286E4DE400F1AFC1 /* CocktailTableViewCell.swift */; };
 		641E0B91286E4DE400F1AFC1 /* CocktailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 641E0B8F286E4DE400F1AFC1 /* CocktailTableViewCell.xib */; };
+		6457EB50286F0A9D000C0C59 /* CocktailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6457EB4F286F0A9D000C0C59 /* CocktailDetailViewController.swift */; };
+		6457EB54286F2706000C0C59 /* IngredientMeasureItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6457EB53286F2706000C0C59 /* IngredientMeasureItemView.swift */; };
 		64ED7FF1286D004C009D3C7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ED7FF0286D004C009D3C7F /* AppDelegate.swift */; };
 		64ED7FF3286D004C009D3C7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ED7FF2286D004C009D3C7F /* SceneDelegate.swift */; };
 		64ED7FF5286D004C009D3C7F /* CocktailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ED7FF4286D004C009D3C7F /* CocktailListViewController.swift */; };
@@ -63,6 +65,8 @@
 		641E0B8B286E496900F1AFC1 /* UIApplication+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+extensions.swift"; sourceTree = "<group>"; };
 		641E0B8E286E4DE400F1AFC1 /* CocktailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailTableViewCell.swift; sourceTree = "<group>"; };
 		641E0B8F286E4DE400F1AFC1 /* CocktailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CocktailTableViewCell.xib; sourceTree = "<group>"; };
+		6457EB4F286F0A9D000C0C59 /* CocktailDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDetailViewController.swift; sourceTree = "<group>"; };
+		6457EB53286F2706000C0C59 /* IngredientMeasureItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientMeasureItemView.swift; sourceTree = "<group>"; };
 		64ED7FED286D004C009D3C7F /* Cocktails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocktails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64ED7FF0286D004C009D3C7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64ED7FF2286D004C009D3C7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 			children = (
 				641E0B8D286E4DD700F1AFC1 /* Cell */,
 				64ED7FF4286D004C009D3C7F /* CocktailListViewController.swift */,
+				6457EB4F286F0A9D000C0C59 /* CocktailDetailViewController.swift */,
+				6457EB53286F2706000C0C59 /* IngredientMeasureItemView.swift */,
 				64ED7FF6286D004C009D3C7F /* Main.storyboard */,
 				64ED7FFB286D004E009D3C7F /* LaunchScreen.storyboard */,
 			);
@@ -209,9 +215,9 @@
 		64ED8029286D072B009D3C7F /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				641E0B87286E459500F1AFC1 /* CocktailServiceFacade.swift */,
 				641E0B83286E402600F1AFC1 /* DrinksAPI.swift */,
 				641E0B81286E3F8900F1AFC1 /* DrinksAPIEndpoints.swift */,
-				641E0B87286E459500F1AFC1 /* CocktailServiceFacade.swift */,
 				64ED802B286D076B009D3C7F /* DrinksService.swift */,
 				64ED8030286D080B009D3C7F /* DrinksError.swift */,
 			);
@@ -397,6 +403,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				641E0B84286E402600F1AFC1 /* DrinksAPI.swift in Sources */,
+				6457EB50286F0A9D000C0C59 /* CocktailDetailViewController.swift in Sources */,
+				6457EB54286F2706000C0C59 /* IngredientMeasureItemView.swift in Sources */,
 				641E0B88286E459500F1AFC1 /* CocktailServiceFacade.swift in Sources */,
 				64ED8022286D0335009D3C7F /* Coordinator.swift in Sources */,
 				64ED8027286D0387009D3C7F /* MainCoordinator.swift in Sources */,
@@ -522,7 +530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -576,7 +584,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

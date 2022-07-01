@@ -18,6 +18,14 @@ class MainCoordinator: Coordinator {
     func start() {
         let vc = CocktailListViewController.instantiate()
         vc.coordinator = self
+        navigationController.navigationBar.tintColor = .lightGreen
         navigationController.pushViewController(vc, animated: false)
+    }
+    
+    func pushDetail(with cocktailVM: CocktailViewModel) {
+        let vc = CocktailDetailViewController.instantiate()
+        vc.coordinator = self
+        vc.cocktailViewModel = cocktailVM
+        navigationController.pushViewController(vc, animated: true)
     }
 }

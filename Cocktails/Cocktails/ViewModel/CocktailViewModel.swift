@@ -11,8 +11,10 @@ class CocktailViewModel: CustomStringConvertible {
     let id: String
     let name: String
     let category: String
+    let glassType: String
     let alcoholic: String
-    let instructionsIT: String?
+    let instructions: String?
+    let ingredientsMeasures: [String: String]
     var imageUrlString: String?
     var image: UIImage? {
         didSet {
@@ -25,8 +27,9 @@ class CocktailViewModel: CustomStringConvertible {
         id:\(self.id)
         name:\(self.name)
         category:\(self.category)
+        glassType:\(self.glassType)
         alcoholic:\(self.alcoholic)
-        instructionsIT:\(self.instructionsIT ?? "empty")
+        instructionsIT:\(self.instructions ?? "empty")
         imageUrlString:\(self.imageUrlString ?? "empty")\n\n
         """
     }
@@ -36,15 +39,17 @@ class CocktailViewModel: CustomStringConvertible {
     // \_____________________________________________________________________/
     var bindImageToView : (() -> ()) = {}
     
-    init(id: String, name: String, category: String, alcoholic: String, instructionsIT: String, imageUrlString: String) {
+    init(id: String, name: String, category: String, glassType: String, alcoholic: String, instructions: String, ingredientsMeasures: [String: String], imageUrlString: String) {
         self.id = id
         self.name = name
         self.category = category
+        self.glassType = glassType
         self.alcoholic = alcoholic
-        self.instructionsIT = instructionsIT
+        self.instructions = instructions
+        self.ingredientsMeasures = ingredientsMeasures
         self.imageUrlString = imageUrlString
         self.image = nil
-        fetchCocktailImage()
+        self.fetchCocktailImage()
     }
     
     // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
