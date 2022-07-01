@@ -30,26 +30,18 @@ class CocktailDetailViewController: UIViewController, Storyboarded {
         super.viewDidLoad()
         styleView()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // Make the navigation bar background clear
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-
-        UINavigationBar.appearance().standardAppearance = appearance
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        // Restore the navigation bar to default
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.shadowImage = nil
-    }
 
     private func styleView() {
         //    MARK: - image
-        imgView.image = cocktailViewModel?.image
+        if let image = cocktailViewModel?.image {
+            imgView.image = image
+        } else {
+            cocktailViewModel?.bindImageToView = { [weak self] in
+                DispatchQueue.main.async {
+                    self?.imgView.image = self?.cocktailViewModel?.image
+                }
+            }
+        }
         imgView.clipsToBounds = true
         imgView.layer.cornerRadius = 30
         imgView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
