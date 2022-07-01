@@ -11,7 +11,7 @@ class CocktailViewModel: CustomStringConvertible {
     let id: String
     let name: String
     let category: String
-    let isAlcoholic: Bool
+    let alcoholic: String
     let instructionsIT: String?
     var imageUrlString: String?
     var image: UIImage? {
@@ -25,7 +25,7 @@ class CocktailViewModel: CustomStringConvertible {
         id:\(self.id)
         name:\(self.name)
         category:\(self.category)
-        isAlcoholic:\(self.isAlcoholic)
+        alcoholic:\(self.alcoholic)
         instructionsIT:\(self.instructionsIT ?? "empty")
         imageUrlString:\(self.imageUrlString ?? "empty")\n\n
         """
@@ -36,11 +36,11 @@ class CocktailViewModel: CustomStringConvertible {
     // \_____________________________________________________________________/
     var bindImageToView : (() -> ()) = {}
     
-    init(id: String, name: String, category: String, isAlcoholic: Bool, instructionsIT: String, imageUrlString: String) {
+    init(id: String, name: String, category: String, alcoholic: String, instructionsIT: String, imageUrlString: String) {
         self.id = id
         self.name = name
         self.category = category
-        self.isAlcoholic = isAlcoholic
+        self.alcoholic = alcoholic
         self.instructionsIT = instructionsIT
         self.imageUrlString = imageUrlString
         self.image = nil

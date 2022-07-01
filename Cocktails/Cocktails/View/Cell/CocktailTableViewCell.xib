@@ -54,7 +54,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="categoryLabel" destination="9UH-Fj-lBX" id="z9B-lY-Rpt"/>
+                <outlet property="alcoholicLabel" destination="9UH-Fj-lBX" id="z9B-lY-Rpt"/>
                 <outlet property="imgView" destination="nLS-A9-nt3" id="Dxc-UG-n6u"/>
                 <outlet property="nameLabel" destination="d0e-qS-Wgl" id="UhG-VG-ABT"/>
             </connections>

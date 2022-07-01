@@ -15,7 +15,7 @@ class CocktailServiceFacade {
             case .success(let drinks):
                 let cocktails = drinks.filter({ $0.strCategory == "Cocktail" })
                 let cocktailsVM = cocktails.map({ cocktail in
-                    CocktailViewModel(id: cocktail.idDrink, name: cocktail.strDrink, category: cocktail.strCategory ?? "", isAlcoholic: cocktail.strAlcoholic=="Alcoholic", instructionsIT: cocktail.strInstructionsIT ?? "", imageUrlString: cocktail.strDrinkThumb ?? "")
+                    CocktailViewModel(id: cocktail.idDrink, name: cocktail.strDrink, category: cocktail.strCategory ?? "", alcoholic: cocktail.strAlcoholic ?? "", instructionsIT: cocktail.strInstructionsIT ?? "", imageUrlString: cocktail.strDrinkThumb ?? "")
                 })
                 completion(.success(cocktailsVM))
                 Log.info("fetchCocktails SUCCESS ->", cocktailsVM)

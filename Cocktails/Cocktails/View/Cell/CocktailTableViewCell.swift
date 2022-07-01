@@ -10,7 +10,7 @@ import UIKit
 class CocktailTableViewCell: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var alcoholicLabel: UILabel!
     
     // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
     //    MARK: - Public var
@@ -38,7 +38,7 @@ class CocktailTableViewCell: UITableViewCell {
         imgView.layer.cornerRadius = 10
         
         nameLabel.text = cocktailViewModel?.name
-        categoryLabel.text = cocktailViewModel?.category
+        alcoholicLabel.text = cocktailViewModel?.alcoholic
     }
     
     private func setupInteractions() {
