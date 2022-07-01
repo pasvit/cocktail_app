@@ -8,8 +8,13 @@
 import UIKit
 
 class CocktailListViewController: UIViewController, Storyboarded {
-    @IBOutlet weak var tableView: UITableView!
+    //    MARK: - Coordinator
+    weak var coordinator: MainCoordinator?
     
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - View
+    // \_____________________________________________________________________/
+    @IBOutlet weak var tableView: UITableView!
     private var loaderView: UIActivityIndicatorView {
         let activityIndicatorView = UIActivityIndicatorView(style: .medium)
         activityIndicatorView.startAnimating()
@@ -17,7 +22,8 @@ class CocktailListViewController: UIViewController, Storyboarded {
         return activityIndicatorView
     }
     
-    weak var coordinator: MainCoordinator?
+    private let refreshControl = UIRefreshControl()
+    private let searchController = UISearchController(searchResultsController: nil)
     
     // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
     //    MARK: - Private Var
@@ -27,22 +33,48 @@ class CocktailListViewController: UIViewController, Storyboarded {
         cocktailListViewModel?.cocktailsViewModel
     }
     
+    // filter
+    private var filteredCocktails: [CocktailViewModel] = []
+    private var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    private var isFiltering: Bool {
+        return searchController.isActive && !isSearchBarEmpty
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerTableViewCells()
+        setupTableView()
         setUpNavigation()
+        setUpSearchController()
         callToViewModelForUIUpdate()
     }
     
     // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
     //    MARK: - Private Methods
     // \_____________________________________________________________________/
-    private func setUpNavigation() {
-        navigationItem.title = "Cocktails"
+    private func setupTableView() {
+        registerTableViewCells()
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
     }
     
     private func registerTableViewCells() {
         tableView.register(UINib(nibName: "CocktailTableViewCell", bundle: nil), forCellReuseIdentifier: "CocktailTableViewCell")
+    }
+    
+    private func setUpNavigation() {
+        navigationItem.title = "Cocktails"
+    }
+    
+    private func setUpSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Cocktail"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     private func callToViewModelForUIUpdate() {
@@ -81,21 +113,53 @@ class CocktailListViewController: UIViewController, Storyboarded {
     private func hideBottomLoader() {
         self.tableView.tableFooterView?.isHidden = true
     }
+    
+    @objc private func refresh(_ sender: AnyObject) {
+        if InternetConnectionManager.isConnectedToNetwork() {
+            if let isLoading = self.cocktailListViewModel?.state.isLoading, !isLoading {
+                self.callToViewModelForUIUpdate()
+            }
+            self.refreshControl.endRefreshing()
+        } else {
+            UIAlertController.showError(title: "Info", message: "Turn on connection if you want to refresh cocktails") {
+                self.refreshControl.endRefreshing()
+            }
+        }
+    }
+    
 }
 
+// ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+//    MARK: - TableView Data Source
+// \___________________________________________/
 extension CocktailListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let cocktailsVM = cocktailsViewModel else { return 0 }
-        return cocktailsVM.count
+        if isFiltering {
+            return filteredCocktails.count
+        }
+        return cocktailsViewModel?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cocktailVM: CocktailViewModel?
+        
+        if isFiltering {
+            cocktailVM = filteredCocktails[indexPath.row]
+        } else if let cocktailsVM = self.cocktailsViewModel, !cocktailsVM.isEmpty {
+            if cocktailsVM.count >= indexPath.row {
+                cocktailVM = cocktailsVM[indexPath.row]
+            }
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CocktailTableViewCell", for: indexPath) as! CocktailTableViewCell
-        cell.cocktailViewModel = self.cocktailsViewModel?[indexPath.row]
+        cell.cocktailViewModel = cocktailVM
         return cell
     }
 }
 
+// ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+//    MARK: - TableView Delegate
+// \___________________________________________/
 extension CocktailListViewController: UITableViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -111,5 +175,25 @@ extension CocktailListViewController: UITableViewDelegate {
                 self.showBottomLoader()
             }
         }
+    }
+}
+
+// ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+//    MARK: - UISearchResultsUpdating Delegate
+// \___________________________________________/
+extension CocktailListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        self.tableView.tableFooterView?.isHidden = true
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
+    
+    func filterContentForSearchText(_ searchText: String,
+                                    cocktailVM: CocktailViewModel? = nil) {
+        filteredCocktails = cocktailsViewModel?.filter({
+            $0.name.lowercased().contains(searchText.lowercased())
+        }) ?? []
+        
+        tableView.reloadData()
     }
 }
