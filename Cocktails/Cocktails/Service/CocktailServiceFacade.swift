@@ -9,11 +9,16 @@ import Foundation
 import UIKit
 
 class CocktailServiceFacade {
+    enum CocktailCategory: String {
+        case Cocktail
+        case OrdinaryDrink = "Ordinary Drink"
+    }
+    
     class func fetchCocktails(by letter: String, completion: @escaping (Result<[CocktailViewModel], DrinksError>) -> Void) {
         DrinksService().fetchDrinks(by: letter) { result in
             switch result {
             case .success(let drinks):
-                let cocktails = drinks.filter({ $0.strCategory == "Cocktail" || $0.strCategory == "Ordinary Drink" })
+                let cocktails = drinks.filter({ $0.strCategory == CocktailCategory.Cocktail.rawValue || $0.strCategory == CocktailCategory.OrdinaryDrink.rawValue })
                 let cocktailsVM = cocktails.map({ cocktail in
                     CocktailViewModel(id: cocktail.idDrink, name: cocktail.strDrink, category: cocktail.strCategory ?? "", glassType: cocktail.strGlass ?? "", alcoholic: cocktail.strAlcoholic ?? "", instructions: cocktail.strInstructions ?? "", ingredientsMeasures: getIngredientsMeasures(from: cocktail), imageUrlString: cocktail.strDrinkThumb ?? "")
                 })
