@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CocktailError: Error {
+enum DrinksError: Error {
     case statusCode
     case decoding
     case invalidURL

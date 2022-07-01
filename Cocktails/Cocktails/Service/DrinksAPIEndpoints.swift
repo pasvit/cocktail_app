@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CocktailAPIEndpoints {
+enum DrinksAPIEndpoints {
     case getDrinksBy(String)
     
     func urlString() -> String {
@@ -18,10 +18,10 @@ enum CocktailAPIEndpoints {
     }
 }
 
-extension CocktailAPIEndpoints {
+extension DrinksAPIEndpoints {
     
     fileprivate func composeURL(path: String, params: [String: String]) -> String {
-        let url = CocktailAPI.authenticatedBaseURL.appendingPathComponent(path)
+        let url = DrinksAPI.authenticatedBaseURL.appendingPathComponent(path)
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         var queryItems = Array(urlComponents.queryItems ?? [])
         

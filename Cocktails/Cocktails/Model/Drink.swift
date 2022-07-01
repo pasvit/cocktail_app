@@ -12,8 +12,10 @@ struct Response: Codable {
 }
 
 struct Drink: Codable {
-    let idDrink, strDrink, strCategory, strAlcoholic: String
-    let strInstructionsIT: String
+    let idDrink: String
+    let strDrink: String
+    let strCategory, strAlcoholic: String?
+    let strInstructionsIT: String?
     let strDrinkThumb: String?
     let strIngredient1, strIngredient2, strIngredient3: String?
 }

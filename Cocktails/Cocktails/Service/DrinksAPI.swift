@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CocktailAPI {
+struct DrinksAPI {
     static fileprivate let APIKey = "1"
     static fileprivate let baseURL = URL(string: "https://www.thecocktaildb.com/api/json/v1/")!
     
