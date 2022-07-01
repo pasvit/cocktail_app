@@ -17,6 +17,8 @@
 		641E0B91286E4DE400F1AFC1 /* CocktailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 641E0B8F286E4DE400F1AFC1 /* CocktailTableViewCell.xib */; };
 		6457EB50286F0A9D000C0C59 /* CocktailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6457EB4F286F0A9D000C0C59 /* CocktailDetailViewController.swift */; };
 		6457EB54286F2706000C0C59 /* IngredientMeasureItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6457EB53286F2706000C0C59 /* IngredientMeasureItemView.swift */; };
+		64DA78B1286F925A00346A26 /* RandomCocktailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA78AF286F925A00346A26 /* RandomCocktailTableViewCell.swift */; };
+		64DA78B2286F925A00346A26 /* RandomCocktailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64DA78B0286F925A00346A26 /* RandomCocktailTableViewCell.xib */; };
 		64ED7FF1286D004C009D3C7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ED7FF0286D004C009D3C7F /* AppDelegate.swift */; };
 		64ED7FF3286D004C009D3C7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ED7FF2286D004C009D3C7F /* SceneDelegate.swift */; };
 		64ED7FF5286D004C009D3C7F /* CocktailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ED7FF4286D004C009D3C7F /* CocktailListViewController.swift */; };
@@ -67,6 +69,8 @@
 		641E0B8F286E4DE400F1AFC1 /* CocktailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CocktailTableViewCell.xib; sourceTree = "<group>"; };
 		6457EB4F286F0A9D000C0C59 /* CocktailDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDetailViewController.swift; sourceTree = "<group>"; };
 		6457EB53286F2706000C0C59 /* IngredientMeasureItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientMeasureItemView.swift; sourceTree = "<group>"; };
+		64DA78AF286F925A00346A26 /* RandomCocktailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCocktailTableViewCell.swift; sourceTree = "<group>"; };
+		64DA78B0286F925A00346A26 /* RandomCocktailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RandomCocktailTableViewCell.xib; sourceTree = "<group>"; };
 		64ED7FED286D004C009D3C7F /* Cocktails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocktails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64ED7FF0286D004C009D3C7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64ED7FF2286D004C009D3C7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 			children = (
 				641E0B8E286E4DE400F1AFC1 /* CocktailTableViewCell.swift */,
 				641E0B8F286E4DE400F1AFC1 /* CocktailTableViewCell.xib */,
+				64DA78AF286F925A00346A26 /* RandomCocktailTableViewCell.swift */,
+				64DA78B0286F925A00346A26 /* RandomCocktailTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -376,6 +382,7 @@
 			files = (
 				64ED7FFD286D004E009D3C7F /* LaunchScreen.storyboard in Resources */,
 				64ED7FFA286D004E009D3C7F /* Assets.xcassets in Resources */,
+				64DA78B2286F925A00346A26 /* RandomCocktailTableViewCell.xib in Resources */,
 				64ED7FF8286D004C009D3C7F /* Main.storyboard in Resources */,
 				641E0B91286E4DE400F1AFC1 /* CocktailTableViewCell.xib in Resources */,
 			);
@@ -408,6 +415,7 @@
 				641E0B88286E459500F1AFC1 /* CocktailServiceFacade.swift in Sources */,
 				64ED8022286D0335009D3C7F /* Coordinator.swift in Sources */,
 				64ED8027286D0387009D3C7F /* MainCoordinator.swift in Sources */,
+				64DA78B1286F925A00346A26 /* RandomCocktailTableViewCell.swift in Sources */,
 				64ED8034286D0876009D3C7F /* Log+extensions.swift in Sources */,
 				64ED7FF5286D004C009D3C7F /* CocktailListViewController.swift in Sources */,
 				641E0B8A286E494400F1AFC1 /* UIAlertViewController+extensions.swift in Sources */,

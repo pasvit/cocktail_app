@@ -20,7 +20,7 @@ class DrinksService: DrinksServiceProtocol {
             let urlString = DrinksAPIEndpoints.getDrinksBy(letter).urlString()
             
             guard let url = URL(string: urlString) else {
-                Log.error("fetchCocktails invalid URL")
+                Log.error("fetchDrinks invalid URL")
                 return completion(.failure(DrinksError.invalidURL))
             }
             
@@ -32,11 +32,11 @@ class DrinksService: DrinksServiceProtocol {
                             completion(.success(response.drinks))
                         } catch let error {
                             completion(.failure(DrinksError.decoding))
-                            Log.error("fetchCocktails decoding error: ", error.localizedDescription)
+                            Log.error("fetchDrinks decoding error: ", error.localizedDescription)
                         }
                     } else {
                         completion(.failure(DrinksError.statusCode))
-                        Log.error("fetchCocktails statusCode error")
+                        Log.error("fetchDrinks statusCode error")
                     }
                 } else {
                     if let error = error {
@@ -44,7 +44,44 @@ class DrinksService: DrinksServiceProtocol {
                     } else {
                         completion(.failure(DrinksError.genericError))
                     }
-                    Log.error("fetchCocktails error")
+                    Log.error("fetchDrinks error")
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    /// allows you to get a random drink
+    func fetchRandomDrink(completion: @escaping (Result<Drink?, DrinksError>) -> Void) {
+        DispatchQueue.global().async {
+            let urlString = DrinksAPIEndpoints.getRandomDrink.urlString()
+            
+            guard let url = URL(string: urlString) else {
+                Log.error("fetchRandomDrink invalid URL")
+                return completion(.failure(DrinksError.invalidURL))
+            }
+            
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if let jsonData = data {
+                    if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                        do {
+                            let response: Response = try JSONDecoder().decode(Response.self, from: jsonData)
+                            completion(.success(response.drinks.first))
+                        } catch let error {
+                            completion(.failure(DrinksError.decoding))
+                            Log.error("fetchRandomDrink decoding error: ", error.localizedDescription)
+                        }
+                    } else {
+                        completion(.failure(DrinksError.statusCode))
+                        Log.error("fetchRandomDrink statusCode error")
+                    }
+                } else {
+                    if let error = error {
+                        completion(.failure(DrinksError.other(error)))
+                    } else {
+                        completion(.failure(DrinksError.genericError))
+                    }
+                    Log.error("fetchRandomDrink error")
                 }
             }
             task.resume()

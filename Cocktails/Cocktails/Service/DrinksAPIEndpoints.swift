@@ -9,11 +9,14 @@ import Foundation
 
 enum DrinksAPIEndpoints {
     case getDrinksBy(String)
+    case getRandomDrink
     
     func urlString() -> String {
         switch self {
         case .getDrinksBy(let firstLetter):
             return composeURL(path: "/search.php", params: ["f": firstLetter])
+        case .getRandomDrink:
+            return composeURL(path: "/random.php", params: [:])
         }
     }
 }
