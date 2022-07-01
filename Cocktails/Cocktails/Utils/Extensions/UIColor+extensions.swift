@@ -9,4 +9,6 @@ import UIKit
 
 extension UIColor {
     static let white = UIColor(named: "white")
+    static let lightGreen = UIColor(named: "lightGreen")
+    static let black = UIColor(named: "black")
 }
