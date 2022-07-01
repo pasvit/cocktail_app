@@ -20,7 +20,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="h2V-P4-JMY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="white"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="SPI-4e-YkV"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="VeH-jK-iMu"/>
@@ -28,7 +28,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="white"/>
                         <constraints>
                             <constraint firstItem="h2V-P4-JMY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4Iy-Ye-3wB"/>
                             <constraint firstAttribute="bottom" secondItem="h2V-P4-JMY" secondAttribute="bottom" id="5g5-1k-6S3"/>
@@ -184,6 +184,9 @@
     <resources>
         <namedColor name="black">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

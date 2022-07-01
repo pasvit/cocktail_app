@@ -73,7 +73,8 @@ class CocktailListViewController: UIViewController, Storyboarded {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Cocktail"
-        navigationItem.searchController = searchController
+        searchController.searchBar.backgroundImage = UIImage()
+        tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
     }
     
