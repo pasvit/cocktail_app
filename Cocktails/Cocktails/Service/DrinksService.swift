@@ -8,8 +8,6 @@
 import Foundation
 
 class DrinksService {
-    private let baseUrl: URL? = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a")
-    
     /// allows you to get a list of drinks by first letter
     func fetchDrinks(by letter: String, completion: @escaping (Result<[Drink], DrinksError>) -> Void) {
         DispatchQueue.global().async {
