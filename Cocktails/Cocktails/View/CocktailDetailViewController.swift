@@ -26,11 +26,17 @@ class CocktailDetailViewController: UIViewController, Storyboarded {
     // \_____________________________________________________________________/
     var cocktailViewModel: CocktailViewModel?
     
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - Init
+    // \_____________________________________________________________________/
     override func viewDidLoad() {
         super.viewDidLoad()
         styleView()
     }
 
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - private func
+    // \_____________________________________________________________________/
     private func styleView() {
         //    MARK: - image
         if let image = cocktailViewModel?.image {

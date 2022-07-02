@@ -2,7 +2,7 @@
 //  RandomCocktailTableViewCell.swift
 //  Cocktails
 //
-//  Created by c333721 on 01/07/22.
+//  Created by Pasquale on 01/07/22.
 //
 
 import UIKit

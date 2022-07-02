@@ -23,14 +23,17 @@ class CocktailViewModel: CustomStringConvertible {
     }
     
     var description: String {
-        """
+        let imageInfo = self.image == nil ? "nil" : "loaded"
+        return """
         id:\(self.id)
         name:\(self.name)
         category:\(self.category)
         glassType:\(self.glassType)
         alcoholic:\(self.alcoholic)
-        instructionsIT:\(self.instructions ?? "empty")
-        imageUrlString:\(self.imageUrlString ?? "empty")\n\n
+        instructions:\(self.instructions ?? "empty")
+        ingredientsMeasures:\(self.ingredientsMeasures)
+        imageUrlString:\(self.imageUrlString ?? "empty")
+        image:\(imageInfo)\n\n
         """
     }
     
@@ -39,7 +42,14 @@ class CocktailViewModel: CustomStringConvertible {
     // \_____________________________________________________________________/
     var bindImageToView : (() -> ()) = {}
     
-    init(id: String, name: String, category: String, glassType: String, alcoholic: String, instructions: String, ingredientsMeasures: [String: String], imageUrlString: String) {
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - private var
+    // \_____________________________________________________________________/
+    private var service: CocktailServiceProtocol
+    
+    init(service: CocktailServiceProtocol = CocktailServiceFacade(), id: String, name: String, category: String, glassType: String, alcoholic: String, instructions: String, ingredientsMeasures: [String: String], imageUrlString: String) {
+        self.service = service
+        
         self.id = id
         self.name = name
         self.category = category
@@ -57,7 +67,7 @@ class CocktailViewModel: CustomStringConvertible {
     // \_____________________________________________________________________/
     private func fetchCocktailImage() {
         guard let imageUrlString = self.imageUrlString else { return }
-        CocktailServiceFacade.fetchCocktailImage(with: imageUrlString) { result in
+        service.fetchCocktailImage(with: imageUrlString) { result in
             switch result {
             case .success(let image):
                 self.image = image

@@ -18,7 +18,7 @@ class CocktailTableViewCell: UITableViewCell {
     var cocktailViewModel: CocktailViewModel? {
         didSet {
             self.styleView()
-            self.setupInteractions()
+            self.setupBindings()
         }
     }
     
@@ -41,7 +41,7 @@ class CocktailTableViewCell: UITableViewCell {
         alcoholicLabel.text = cocktailViewModel?.alcoholic
     }
     
-    private func setupInteractions() {
+    private func setupBindings() {
         cocktailViewModel?.bindImageToView = { [weak self] in
             DispatchQueue.main.async {
                 self?.reloadRow(with: self?.imgView, duration: 0.2, animations: { self?.imgView.image = self?.cocktailViewModel?.image })

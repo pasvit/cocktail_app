@@ -71,6 +71,9 @@ class CocktailListViewModel {
     // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
     //    MARK: - Private var
     // \_____________________________________________________________________/
+    private var service: CocktailServiceProtocol
+    
+    /// all first letters of cocktails to load
     private let COCKTAILS_INITIALS: [String] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "v", "w", "y", "z"]
     /// last initial used to load cocktails
     private var indexToLoad: Int = -1
@@ -81,7 +84,8 @@ class CocktailListViewModel {
     // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
     //    MARK: - Init
     // \_____________________________________________________________________/
-    init() {
+    init(service: CocktailServiceProtocol = CocktailServiceFacade()) {
+        self.service = service
         loadMoreCocktails()
     }
     
@@ -107,7 +111,7 @@ class CocktailListViewModel {
         
         state = .loading
         
-        CocktailServiceFacade.fetchCocktails(by: COCKTAILS_INITIALS[indexToLoad]) { result in
+        service.fetchCocktails(by: COCKTAILS_INITIALS[indexToLoad]) { result in
             switch result {
             case .success(let cocktailsVM):
                 self.cocktailsViewModel += cocktailsVM

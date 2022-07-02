@@ -21,7 +21,6 @@ class CocktailListViewController: UIViewController, Storyboarded {
         activityIndicatorView.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
         return activityIndicatorView
     }
-    
     private let refreshControl = UIRefreshControl()
     private let searchController = UISearchController(searchResultsController: nil)
     
@@ -42,6 +41,9 @@ class CocktailListViewController: UIViewController, Storyboarded {
         return searchController.isActive && !isSearchBarEmpty
     }
     
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - Init
+    // \_____________________________________________________________________/
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -178,7 +180,7 @@ extension CocktailListViewController: UITableViewDelegate {
         
         /// random cocktail fixed to zero position
         if row == 0 {
-            CocktailServiceFacade.fetchRandomCocktail { result in
+            CocktailServiceFacade().fetchRandomCocktail { result in
                 switch result {
                 case .success(let cocktailVM):
                     DispatchQueue.main.async {

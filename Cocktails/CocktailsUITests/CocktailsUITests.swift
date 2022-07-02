@@ -22,12 +22,26 @@ class CocktailsUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func test_cocktailListView_haveNavigationBarTitle() throws {
         let app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+       
+        let navBarTitle = app.staticTexts["Cocktails"]
+        
+        XCTAssert(navBarTitle.exists)
+    }
+    
+    func test_cocktailDetailView_haveBackButtonText() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let listView = app.tables.firstMatch
+        let rowView = listView.cells.firstMatch
+        rowView.tap()
+        
+        let cocktailDetailBackButtonText = app.staticTexts["Cocktails"]
+        
+        XCTAssert(cocktailDetailBackButtonText.exists)
     }
 
     func testLaunchPerformance() throws {

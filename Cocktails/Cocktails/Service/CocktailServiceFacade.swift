@@ -8,13 +8,15 @@
 import Foundation
 import UIKit
 
-class CocktailServiceFacade {
+class CocktailServiceFacade: CocktailServiceProtocol {
     enum CocktailCategory: String {
         case Cocktail
         case OrdinaryDrink = "Ordinary Drink"
     }
     
-    class func fetchCocktails(by letter: String, completion: @escaping (Result<[CocktailViewModel], DrinksError>) -> Void) {
+    /// fetch a list of cocktails by letter
+    /// filtered only categories COCKTAIL and ORDINARY DRINK
+    func fetchCocktails(by letter: String, completion: @escaping (Result<[CocktailViewModel], DrinksError>) -> Void) {
         DrinksService().fetchDrinks(by: letter) { result in
             switch result {
             case .success(let drinks):
@@ -70,7 +72,8 @@ class CocktailServiceFacade {
         }
     }
     
-    class func fetchRandomCocktail(completion: @escaping (Result<CocktailViewModel, DrinksError>) -> Void) {
+    /// get a random cocktail
+    func fetchRandomCocktail(completion: @escaping (Result<CocktailViewModel, DrinksError>) -> Void) {
         DrinksService().fetchRandomDrink() { result in
             switch result {
             case .success(let cocktail):
@@ -78,7 +81,7 @@ class CocktailServiceFacade {
                     completion(.failure(DrinksError.genericError))
                     return 
                 }
-                let cocktailsVM = CocktailViewModel(id: cocktail.idDrink, name: cocktail.strDrink, category: cocktail.strCategory ?? "", glassType: cocktail.strGlass ?? "", alcoholic: cocktail.strAlcoholic ?? "", instructions: cocktail.strInstructions ?? "", ingredientsMeasures: getIngredientsMeasures(from: cocktail), imageUrlString: cocktail.strDrinkThumb ?? "")
+                let cocktailsVM = CocktailViewModel(id: cocktail.idDrink, name: cocktail.strDrink, category: cocktail.strCategory ?? "", glassType: cocktail.strGlass ?? "", alcoholic: cocktail.strAlcoholic ?? "", instructions: cocktail.strInstructions ?? "", ingredientsMeasures: CocktailServiceFacade.getIngredientsMeasures(from: cocktail), imageUrlString: cocktail.strDrinkThumb ?? "")
                 completion(.success(cocktailsVM))
                 Log.info("fetchRandomDrink SUCCESS ->", cocktailsVM)
             case .failure(let error):
@@ -87,7 +90,8 @@ class CocktailServiceFacade {
         }
     }
     
-    class func fetchCocktailImage(with imageUrlString: String, completion: @escaping (Result<UIImage, DrinksError>) -> Void) {
+    /// get a cocktail image by image url
+    func fetchCocktailImage(with imageUrlString: String, completion: @escaping (Result<UIImage, DrinksError>) -> Void) {
         DrinksService().fetchDrinkImageData(with: imageUrlString) { result in
             switch result {
             case .success(let imageData):
