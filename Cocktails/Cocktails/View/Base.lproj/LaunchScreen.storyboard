@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -15,8 +16,33 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your Cocktail " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qp8-4e-sXr">
+                                <rect key="frame" x="30" y="144" width="354" height="86"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cocktails_image" translatesAutoresizingMaskIntoConstraints="NO" id="qqS-d4-xOv">
+                                <rect key="frame" x="40" y="280" width="334" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="UaZ-9U-WTD"/>
+                                    <constraint firstAttribute="width" constant="334" id="f44-2E-F59"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qqS-d4-xOv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8ti-Br-fXq"/>
+                            <constraint firstItem="Qp8-4e-sXr" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ajv-vM-WCp"/>
+                            <constraint firstItem="qqS-d4-xOv" firstAttribute="top" secondItem="Qp8-4e-sXr" secondAttribute="bottom" constant="50" id="HGg-Io-hqx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qqS-d4-xOv" secondAttribute="trailing" constant="40" id="L49-OO-jOX"/>
+                            <constraint firstItem="Qp8-4e-sXr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="XLc-d0-w1l"/>
+                            <constraint firstItem="qqS-d4-xOv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="Zt0-FY-lJg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qp8-4e-sXr" secondAttribute="trailing" constant="30" id="nU7-Dc-Lxz"/>
+                            <constraint firstItem="Qp8-4e-sXr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="z1W-Cp-5xG"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -25,6 +51,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cocktails_image" width="360" height="327"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
