@@ -180,14 +180,17 @@ extension CocktailListViewController: UITableViewDelegate {
         
         /// random cocktail fixed to zero position
         if row == 0 {
-            CocktailServiceFacade().fetchRandomCocktail { result in
-                switch result {
-                case .success(let cocktailVM):
-                    DispatchQueue.main.async {
+            let selectedCell = tableView.cellForRow(at: indexPath) as! RandomCocktailTableViewCell
+            selectedCell.showLoader()
+            cocktailListViewModel?.loadRandomCocktail() { result in
+                DispatchQueue.main.async {
+                    selectedCell.hideLoader()
+                    switch result {
+                    case .success(let cocktailVM):
                         self.coordinator?.pushDetail(with: cocktailVM)
+                    case .failure(let error):
+                        UIAlertController.showError(message: error.localizedDescription)
                     }
-                case .failure(let error):
-                    UIAlertController.showError(message: error.localizedDescription)
                 }
             }
             return

@@ -20,6 +20,7 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9ks-Kw-VOA">
                         <rect key="frame" x="25" y="10" width="60" height="60"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="gBC-p9-eQ7"/>
                             <constraint firstAttribute="width" constant="60" id="i5h-ie-PKZ"/>
@@ -42,19 +43,25 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="JHf-FK-RhP">
+                        <rect key="frame" x="190" y="30" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="vFL-6N-F12" secondAttribute="trailing" constant="25" id="5JW-2C-sKy"/>
                     <constraint firstItem="9ks-Kw-VOA" firstAttribute="centerY" secondItem="0xE-uj-6Ed" secondAttribute="centerY" id="63T-qg-gQh"/>
+                    <constraint firstItem="JHf-FK-RhP" firstAttribute="centerX" secondItem="vFL-6N-F12" secondAttribute="centerX" id="8pZ-NQ-nyQ"/>
                     <constraint firstAttribute="bottom" secondItem="9ks-Kw-VOA" secondAttribute="bottom" constant="10" id="Neo-2d-a5P"/>
                     <constraint firstItem="vFL-6N-F12" firstAttribute="centerY" secondItem="9ks-Kw-VOA" secondAttribute="centerY" id="W5w-3X-1Me"/>
                     <constraint firstItem="9ks-Kw-VOA" firstAttribute="leading" secondItem="0xE-uj-6Ed" secondAttribute="leading" constant="25" id="kaK-sD-Rdd"/>
                     <constraint firstItem="9ks-Kw-VOA" firstAttribute="top" secondItem="0xE-uj-6Ed" secondAttribute="top" constant="10" id="qrw-tc-izo"/>
                     <constraint firstItem="vFL-6N-F12" firstAttribute="leading" secondItem="9ks-Kw-VOA" secondAttribute="trailing" constant="20" id="rkq-9K-dgZ"/>
+                    <constraint firstItem="JHf-FK-RhP" firstAttribute="centerY" secondItem="vFL-6N-F12" secondAttribute="centerY" id="taU-bt-Fit"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="n13-PY-3aa"/>
             <connections>
+                <outlet property="activityIndicator" destination="JHf-FK-RhP" id="QMS-ZD-azf"/>
                 <outlet property="imgView" destination="9ks-Kw-VOA" id="Zoe-Lt-01h"/>
                 <outlet property="subtitleLabel" destination="Co3-2R-hmi" id="qCH-S1-NNE"/>
                 <outlet property="titleLabel" destination="i5e-s2-iz3" id="DlQ-Qd-3Dc"/>

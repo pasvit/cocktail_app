@@ -121,4 +121,15 @@ class CocktailListViewModel {
             }
         }
     }
+    
+    func loadRandomCocktail(completion: @escaping (Result<CocktailViewModel, DrinksError>) -> ()) {
+        service.fetchRandomCocktail { result in
+            switch result {
+            case .success(let cocktailVM):
+                completion(.success(cocktailVM))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

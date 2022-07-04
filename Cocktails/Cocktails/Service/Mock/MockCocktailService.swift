@@ -33,4 +33,6 @@ class MockCocktailService: CocktailServiceProtocol {
         guard let result = fetchCocktailImageResult else { return }
         completion(result)
     }
+    
+    func fetchRandomCocktail(completion: @escaping (Result<CocktailViewModel, DrinksError>) -> Void) {}
 }

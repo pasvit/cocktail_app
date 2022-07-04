@@ -14,6 +14,7 @@ class RandomCocktailTableViewCell: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
     //    MARK: - Life Cycle
@@ -21,11 +22,28 @@ class RandomCocktailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         styleView()
+        hideLoader()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - public func
+    // \_____________________________________________________________________/
+    func showLoader() {
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+        self.isUserInteractionEnabled = false
+    }
+    
+    func hideLoader() {
+        self.activityIndicator.isHidden = true
+        self.activityIndicator.stopAnimating()
+        self.isUserInteractionEnabled = true
+    }
+    
     
     // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
     //    MARK: - private func
