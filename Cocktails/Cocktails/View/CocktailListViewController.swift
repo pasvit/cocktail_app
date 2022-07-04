@@ -214,7 +214,7 @@ extension CocktailListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let isListCompleted = self.cocktailListViewModel?.state.isCompleted, InternetConnectionManager.isConnectedToNetwork() && !isListCompleted {
+        if let isListCompleted = self.cocktailListViewModel?.state.isCompleted, !isFiltering && InternetConnectionManager.isConnectedToNetwork() && !isListCompleted {
             let lastSectionIndex = tableView.numberOfSections - 1
             let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
             if indexPath.section ==  lastSectionIndex && indexPath.row == lastRowIndex {
