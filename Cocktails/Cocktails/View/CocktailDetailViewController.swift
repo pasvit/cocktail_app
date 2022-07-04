@@ -27,7 +27,7 @@ class CocktailDetailViewController: UIViewController, Storyboarded {
     var cocktailViewModel: CocktailViewModel?
     
     // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
-    //    MARK: - Init
+    //    MARK: - Life Cycle
     // \_____________________________________________________________________/
     override func viewDidLoad() {
         super.viewDidLoad()

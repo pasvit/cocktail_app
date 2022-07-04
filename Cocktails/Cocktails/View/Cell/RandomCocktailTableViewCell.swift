@@ -8,12 +8,15 @@
 import UIKit
 
 class RandomCocktailTableViewCell: UITableViewCell {
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - View
+    // \_____________________________________________________________________/
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     
     // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
-    //    MARK: - Public var
+    //    MARK: - Life Cycle
     // \_____________________________________________________________________/
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +27,9 @@ class RandomCocktailTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - private func
+    // \_____________________________________________________________________/
     private func styleView() {
         imgView.image = UIImage(named: "easterEgg_questionMark")
         imgView.layer.cornerRadius = 15

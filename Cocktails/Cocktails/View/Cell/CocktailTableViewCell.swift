@@ -8,6 +8,9 @@
 import UIKit
 
 class CocktailTableViewCell: UITableViewCell {
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - View
+    // \_____________________________________________________________________/
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var alcoholicLabel: UILabel!
@@ -22,6 +25,9 @@ class CocktailTableViewCell: UITableViewCell {
         }
     }
     
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - Life Cycle
+    // \_____________________________________________________________________/
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,6 +39,9 @@ class CocktailTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - private func
+    // \_____________________________________________________________________/
     private func styleView() {
         imgView.image = cocktailViewModel?.image
         imgView.layer.cornerRadius = 10

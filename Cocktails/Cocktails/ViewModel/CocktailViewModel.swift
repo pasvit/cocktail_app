@@ -47,6 +47,9 @@ class CocktailViewModel: CustomStringConvertible {
     // \_____________________________________________________________________/
     private var service: CocktailServiceProtocol
     
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - init
+    // \_____________________________________________________________________/
     init(service: CocktailServiceProtocol = CocktailServiceFacade(), id: String, name: String, category: String, glassType: String, alcoholic: String, instructions: String, ingredientsMeasures: [String: String], imageUrlString: String) {
         self.service = service
         

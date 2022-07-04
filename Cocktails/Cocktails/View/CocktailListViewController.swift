@@ -42,7 +42,7 @@ class CocktailListViewController: UIViewController, Storyboarded {
     }
     
     // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
-    //    MARK: - Init
+    //    MARK: - Life Cycle
     // \_____________________________________________________________________/
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +96,7 @@ class CocktailListViewController: UIViewController, Storyboarded {
                     self?.hideBottomLoader()
                 }
                 if let isListCompleted = self?.cocktailListViewModel?.state.isCompleted {
-                    if isListCompleted { self?.tableView.tableFooterView?.isHidden = true }
+                    if isListCompleted { self?.hideBottomLoader() }
                 }
             }
         }

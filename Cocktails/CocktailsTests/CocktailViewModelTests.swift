@@ -10,11 +10,11 @@ import XCTest
 
 class CocktailDetailViewModelTests: XCTestCase {
     var sut: CocktailViewModel!
-    var mockCountryService: MockCocktailService!
+    var mockCocktailService: MockCocktailService!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockCountryService = MockCocktailService()
+        mockCocktailService = MockCocktailService()
         sut = MockCocktailService.mockedMargarita
     }
     
@@ -25,7 +25,7 @@ class CocktailDetailViewModelTests: XCTestCase {
     
     func test_cocktailViewModel_haveCocktailId() throws {
         //when
-        mockCountryService.fetchCocktailImageResult = .success(UIImage(named: "easterEgg_questionMark")!)
+        mockCocktailService.fetchCocktailImageResult = .success(UIImage(named: "easterEgg_questionMark")!)
         
         // given
         sut = MockCocktailService.mockedMargarita
@@ -36,7 +36,7 @@ class CocktailDetailViewModelTests: XCTestCase {
     
     func test_cocktailViewModel_haveCocktailName() throws {
         //when
-        mockCountryService.fetchCocktailImageResult = .success(UIImage(named: "easterEgg_questionMark")!)
+        mockCocktailService.fetchCocktailImageResult = .success(UIImage(named: "easterEgg_questionMark")!)
         
         // given
         sut = MockCocktailService.mockedMargarita
@@ -47,7 +47,7 @@ class CocktailDetailViewModelTests: XCTestCase {
     
     func test_cocktailViewModel_haveCocktailCategory() throws {
         //when
-        mockCountryService.fetchCocktailImageResult = .success(UIImage(named: "easterEgg_questionMark")!)
+        mockCocktailService.fetchCocktailImageResult = .success(UIImage(named: "easterEgg_questionMark")!)
         
         // given
         sut = MockCocktailService.mockedMargarita
@@ -58,7 +58,7 @@ class CocktailDetailViewModelTests: XCTestCase {
     
     func test_cocktailViewModel_haveCocktailGlassType() throws {
         //when
-        mockCountryService.fetchCocktailImageResult = .success(UIImage(named: "easterEgg_questionMark")!)
+        mockCocktailService.fetchCocktailImageResult = .success(UIImage(named: "easterEgg_questionMark")!)
         
         // given
         sut = MockCocktailService.mockedMargarita
@@ -69,7 +69,7 @@ class CocktailDetailViewModelTests: XCTestCase {
     
     func test_cocktailViewModel_haveCocktailImageUrlString() throws {
         //when
-        mockCountryService.fetchCocktailImageResult = .success(UIImage(named: "easterEgg_questionMark")!)
+        mockCocktailService.fetchCocktailImageResult = .success(UIImage(named: "easterEgg_questionMark")!)
         
         // given
         sut = MockCocktailService.mockedMargarita
@@ -80,10 +80,10 @@ class CocktailDetailViewModelTests: XCTestCase {
     
     func test_cocktailViewModel_haveCocktailImage() throws {
         //when
-        mockCountryService.fetchCocktailImageResult = .success(UIImage(named: "easterEgg_questionMark")!)
+        mockCocktailService.fetchCocktailImageResult = .success(UIImage(named: "easterEgg_questionMark")!)
         
         // given
-        sut = .init(service: mockCountryService, id: "178365", name: "Gin Tonic", category: "Cocktail", glassType: "Highball glass", alcoholic: "Alcoholic", instructions: "Fill a highball glass with ice, pour the gin, top with tonic water and squeeze a lemon wedge and garnish with a lemon wedge.", ingredientsMeasures: ["Lemon Peel": "1 Slice", "Gin": "4 cl", "Tonic Water": "10 cl", "Ice": "cubes"], imageUrlString: "https://www.thecocktaildb.com/images/media/drink/qcgz0t1643821443.jpg")
+        sut = .init(service: mockCocktailService, id: "178365", name: "Gin Tonic", category: "Cocktail", glassType: "Highball glass", alcoholic: "Alcoholic", instructions: "Fill a highball glass with ice, pour the gin, top with tonic water and squeeze a lemon wedge and garnish with a lemon wedge.", ingredientsMeasures: ["Lemon Peel": "1 Slice", "Gin": "4 cl", "Tonic Water": "10 cl", "Ice": "cubes"], imageUrlString: "https://www.thecocktaildb.com/images/media/drink/qcgz0t1643821443.jpg")
 
         //then
         XCTAssertNotNil(sut.image)
@@ -91,10 +91,10 @@ class CocktailDetailViewModelTests: XCTestCase {
     
     func test_cocktailViewModel_haveAllDetails() throws {
         //when
-        mockCountryService.fetchCocktailImageResult = .success(UIImage(named: "easterEgg_questionMark")!)
+        mockCocktailService.fetchCocktailImageResult = .success(UIImage(named: "easterEgg_questionMark")!)
         
         // given
-        sut = .init(service: mockCountryService, id: "178365", name: "Gin Tonic", category: "Cocktail", glassType: "Highball glass", alcoholic: "Alcoholic", instructions: "Fill a highball glass with ice, pour the gin, top with tonic water and squeeze a lemon wedge and garnish with a lemon wedge.", ingredientsMeasures: ["Lemon Peel": "1 Slice", "Gin": "4 cl", "Tonic Water": "10 cl", "Ice": "cubes"], imageUrlString: "https://www.thecocktaildb.com/images/media/drink/qcgz0t1643821443.jpg")
+        sut = .init(service: mockCocktailService, id: "178365", name: "Gin Tonic", category: "Cocktail", glassType: "Highball glass", alcoholic: "Alcoholic", instructions: "Fill a highball glass with ice, pour the gin, top with tonic water and squeeze a lemon wedge and garnish with a lemon wedge.", ingredientsMeasures: ["Lemon Peel": "1 Slice", "Gin": "4 cl", "Tonic Water": "10 cl", "Ice": "cubes"], imageUrlString: "https://www.thecocktaildb.com/images/media/drink/qcgz0t1643821443.jpg")
 
         //then
         XCTAssert(!sut.id.isEmpty && !sut.name.isEmpty && !sut.category.isEmpty && !sut.glassType.isEmpty && !sut.alcoholic.isEmpty && !sut.instructions!.isEmpty && !sut.ingredientsMeasures.isEmpty && !sut.imageUrlString!.isEmpty && sut.image != nil)

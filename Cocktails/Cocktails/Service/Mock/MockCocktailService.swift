@@ -21,6 +21,9 @@ class MockCocktailService: CocktailServiceProtocol {
     var fetchCocktailsResult: Result<[CocktailViewModel], DrinksError>?
     var fetchCocktailImageResult: Result<UIImage, DrinksError>?
     
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - public func
+    // \_____________________________________________________________________/
     func fetchCocktails(by letter: String, completion: @escaping (Result<[CocktailViewModel], DrinksError>) -> Void) {
         guard let result = fetchCocktailsResult else { return }
         completion(result)

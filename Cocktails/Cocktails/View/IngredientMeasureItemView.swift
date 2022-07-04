@@ -8,6 +8,9 @@
 import UIKit
 
 class IngredientMeasureItemView: UIView {
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - View - lazy var
+    // \_____________________________________________________________________/
     lazy var measureLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .light)
@@ -31,14 +34,16 @@ class IngredientMeasureItemView: UIView {
         return view
     }()
     
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - init
+    // \_____________________________________________________________________/
     convenience init(ingredient: String, measure: String) {
         self.init(frame: .zero)
         setup()
         style(with: ingredient, and: measure)
         layout()
     }
-    
-    // MARK: - Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -47,19 +52,22 @@ class IngredientMeasureItemView: UIView {
         super.init(coder: coder)
     }
     
-    func setup() {
+    // ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+    //    MARK: - private func
+    // \_____________________________________________________________________/
+    private func setup() {
         addSubview(measureLabel)
         addSubview(ingredientLabel)
         addSubview(separatorView)
     }
     
-    func style(with ingredient: String, and measure: String) {
+    private func style(with ingredient: String, and measure: String) {
         measureLabel.text = measure
         ingredientLabel.text = ingredient
         ingredientLabel.textColor = UIColor.black
     }
     
-    func layout() {
+    private func layout() {
         // MARK: - Constraints self View
         NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: 60)
